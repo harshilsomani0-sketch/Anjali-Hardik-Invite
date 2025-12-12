@@ -36,13 +36,13 @@ p {
    SECTION 1: THE HERO (Photo Opener)
    --------------------------------- */
 .hero {
-    height: 100vh; /* Full screen height on load */
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* Push content to the bottom */
+    justify-content: flex-end;
     align-items: center;
-    color: white; /* Ensures text is white */
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* Stronger shadow for contrast */
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
     position: relative;
 }
 
@@ -53,12 +53,9 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the whole area without distortion */
-    
-    /* FIX FOR CROPPING: Centers the content of the image vertically */
-    object-position: 50% 30%; 
-    
-    z-index: 0; 
+    object-fit: cover;
+    object-position: 50% 30%; /* FIX FOR CROPPING */
+    z-index: 0;
 }
 
 /* Semi-transparent overlay for text readability */
@@ -69,14 +66,26 @@ p {
     left: 0;
     right: 0;
     bottom: 0;
-    /* Dark gradient for text visibility, pulling darkness up to 50% height */
-    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); 
-    z-index: 1; /* Above the image, below the text */
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+    z-index: 1;
 }
 
 .hero-text-container {
     padding: 2em 1em 3em;
-    z-index: 2; /* Keep text above the overlay */
+    z-index: 2;
+}
+
+/* DESKTOP ENHANCEMENTS for Typography */
+@media (min-width: 800px) {
+    .names {
+        font-size: 5em; 
+    }
+    .hero-intro {
+        font-size: 1em;
+    }
+    .hero-date {
+        font-size: 1.5em;
+    }
 }
 
 .hero-intro {
@@ -88,7 +97,7 @@ p {
 }
 
 .names {
-    font-size: 3.5em; /* Large names */
+    font-size: 3.5em;
     font-weight: 300;
     line-height: 1.1;
 }
@@ -144,16 +153,12 @@ p {
     color: #666;
 }
 
-
 /* ---------------------------------
    SECTION 2.1: PRE-WEDDING CELEBRATIONS (Combined Card Layout)
-   --- MOBILE VIEW DEFAULT: CARDS STACKED ---
    --------------------------------- */
 .pre-wedding-events-section {
-    /* Background Image Style (Ensure 'subtle-texture.jpg' exists or remove this) */
     background: url('subtle-texture.jpg') no-repeat center center/cover;
     background-color: white; 
-    
     padding: 4em 1em 2em;
     text-align: center;
     position: relative;
@@ -173,20 +178,32 @@ p {
 
 .events-cards-container {
     display: flex;
-    flex-direction: column; /* MOBILE STACKING */
-    gap: 25px; /* Space between cards */
+    flex-direction: column; /* MOBILE STACKING DEFAULT */
+    gap: 25px;
     padding: 0 10px;
 }
 
 /* Base Event Card Styling */
 .event-card {
-    background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white for readability */
+    background-color: rgba(255, 255, 255, 0.95);
     padding: 2.5em 1.5em;
     border-radius: 8px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
     text-align: center;
     z-index: 5; 
+}
+
+/* DESKTOP: Side-by-Side Cards */
+@media (min-width: 768px) {
+    .events-cards-container {
+        flex-direction: row; /* DESKTOP: Layout cards side-by-side */
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .event-card {
+        flex: 1; /* Ensures cards share space equally */
+    }
 }
 
 /* Card Content Styling */
@@ -224,22 +241,11 @@ p {
     margin-top: 1em !important;
 }
 
-
-/* *** THE ELEGANT HOVER EFFECT *** */
+/* HOVER EFFECT (Works on desktop/tablet touch) */
 .event-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     cursor: pointer;
-}
-
-
-/* Media Query for Larger Screens (Desktop/Tablet) */
-@media (min-width: 600px) {
-    .events-cards-container {
-        flex-direction: row; /* Layout cards side-by-side */
-        max-width: 900px;
-        margin: 0 auto;
-    }
 }
 
 
@@ -247,17 +253,14 @@ p {
    SECTION 3: THE DETAILS (Accent Section - Main Wedding Details)
    --------------------------------- */
 .details-section {
-    /* Background Image Style */
     background: url('details-texture.jpg') no-repeat center center/cover;
     background-color: #f0f0f0; 
-    
     position: relative; 
     z-index: 0;
-    
     padding: 3em 1em;
 }
 
-/* Optional Overlay for Readability */
+/* Overlay for Readability */
 .details-section::before {
     content: '';
     position: absolute;
@@ -289,27 +292,7 @@ p {
     font-weight: 600;
 }
 
-.rsvp-button {
-    display: block;
-    width: 80%;
-    max-width: 300px;
-    margin: 3em auto 0;
-    padding: 1em;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    border: 1px solid var(--color-accent);
-    color: var(--color-accent);
-    background-color: transparent;
-    transition: background-color 0.3s, color 0.3s;
-}
 
-.rsvp-button:hover {
-    background-color: var(--color-accent);
-    color: white;
-}
 
 /* ---------------------------------
    SECTION 4: MAP & CLOSER
