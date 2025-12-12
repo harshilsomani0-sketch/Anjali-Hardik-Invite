@@ -41,7 +41,7 @@ p {
     flex-direction: column;
     justify-content: flex-end; /* Push content to the bottom */
     align-items: center;
-    color: golden; /* Ensures text is white */
+    color: white; /* Ensures text is white */
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* Stronger shadow for contrast */
     position: relative;
 }
@@ -75,22 +75,20 @@ p {
 }
 
 .hero-text-container {
-    padding: 3em 1em 3em;
+    padding: 2em 1em 3em;
     z-index: 2; /* Keep text above the overlay */
 }
 
 .hero-intro {
     font-family: var(--font-sans);
-    font-size: 1.5em;
+    font-size: 0.8em;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     margin-bottom: 1em;
-    color: black
-    ;
 }
 
 .names {
-    font-size: 6.0em; /* Large names */
+    font-size: 3.5em; /* Large names */
     font-weight: 300;
     line-height: 1.1;
 }
@@ -104,19 +102,17 @@ p {
 
 .hero-date {
     font-family: var(--font-sans);
-    font-size: 1.5em;
+    font-size: 1.2em;
     letter-spacing: 0.15em;
     margin-top: 1em;
-    color: white;
 }
 
 .scroll-indicator {
-    font-size: 1.0em;
+    font-size: 0.8em;
     letter-spacing: 0.1em;
     opacity: 0.8;
     padding-bottom: 1em;
     z-index: 2;
-    color: white;
 }
 
 /* ---------------------------------
@@ -151,11 +147,16 @@ p {
 
 /* ---------------------------------
    SECTION 2.1: PRE-WEDDING CELEBRATIONS (Combined Card Layout)
+   --- MOBILE VIEW DEFAULT: CARDS STACKED ---
    --------------------------------- */
 .pre-wedding-events-section {
+    /* Background Image Style (Ensure 'subtle-texture.jpg' exists or remove this) */
+    background: url('subtle-texture.jpg') no-repeat center center/cover;
     background-color: white; 
+    
     padding: 4em 1em 2em;
     text-align: center;
+    position: relative;
 }
 
 .pre-wedding-events-section h2 {
@@ -172,27 +173,28 @@ p {
 
 .events-cards-container {
     display: flex;
-    flex-direction: column; /* Stack vertically on mobile first */
+    flex-direction: column; /* MOBILE STACKING */
     gap: 25px; /* Space between cards */
     padding: 0 10px;
 }
 
 /* Base Event Card Styling */
 .event-card {
-    background-color: var(--color-background-alt); /* Light Gray background */
+    background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white for readability */
     padding: 2.5em 1.5em;
     border-radius: 8px; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Soft shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
     text-align: center;
+    z-index: 5; 
 }
 
 /* Card Content Styling */
 .event-card h3 {
-    font-family: var(--font-serif); /* Use the elegant serif font for the event name */
+    font-family: var(--font-serif);
     font-size: 1.5em;
     font-weight: 500;
-    color: var(--color-accent); /* Gold Accent */
+    color: var(--color-accent);
     margin-bottom: 0.8em;
 }
 
@@ -225,13 +227,13 @@ p {
 
 /* *** THE ELEGANT HOVER EFFECT *** */
 .event-card:hover {
-    transform: translateY(-5px); /* Lift the card up slightly */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Increase shadow depth */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
 
 
-/* Media Query for Larger Screens (Side-by-side layout) */
+/* Media Query for Larger Screens (Desktop/Tablet) */
 @media (min-width: 600px) {
     .events-cards-container {
         flex-direction: row; /* Layout cards side-by-side */
@@ -245,22 +247,17 @@ p {
    SECTION 3: THE DETAILS (Accent Section - Main Wedding Details)
    --------------------------------- */
 .details-section {
-    /* *** BACKGROUND IMAGE ADDED HERE *** */
-    /* Replace 'details-texture.jpg' with your image file path. 
-       This image should be subtle (e.g., a faint paper or cloth texture) */
+    /* Background Image Style */
     background: url('details-texture.jpg') no-repeat center center/cover;
+    background-color: #f0f0f0; 
     
-    /* Ensure good contrast, especially if your text is dark */
-    background-color: #f0f0f0; /* Fallback color */
-    
-    /* Overlay for text contrast (if needed) */
     position: relative; 
     z-index: 0;
     
     padding: 3em 1em;
 }
 
-/* If you need a subtle overlay on the whole section for text readability */
+/* Optional Overlay for Readability */
 .details-section::before {
     content: '';
     position: absolute;
@@ -268,18 +265,16 @@ p {
     left: 0;
     right: 0;
     bottom: 0;
-    /* This creates a subtle light overlay (80% opacity light gray/white) */
     background-color: rgba(255, 255, 255, 0.2); 
     z-index: 1; 
 }
 
-/* Ensure all content (text, buttons) sits above the background and the overlay */
+/* Ensure content is above the background and the overlay */
 .detail-block, .rsvp-button {
     position: relative;
     z-index: 2;
 }
 
-/* The rest of the styling remains the same... */
 .detail-block {
     margin-bottom: 2em;
 }
@@ -289,7 +284,32 @@ p {
     font-size: 1.4em;
     margin-bottom: 0.5em;
 }
-/* ... etc. (The rest of the CSS for this section continues below) */
+
+.detail-block strong {
+    font-weight: 600;
+}
+
+.rsvp-button {
+    display: block;
+    width: 80%;
+    max-width: 300px;
+    margin: 3em auto 0;
+    padding: 1em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.rsvp-button:hover {
+    background-color: var(--color-accent);
+    color: white;
+}
 
 /* ---------------------------------
    SECTION 4: MAP & CLOSER
