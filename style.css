@@ -61,8 +61,8 @@ p {
     min-width: 100%; 
     min-height: 100%; 
     
-    width: auto; /* Allow natural scaling */
-    height: auto;
+    width: 50%; /* Allow natural scaling */
+    height: 0;
     object-fit: cover; /* Fallback for scaling */
     z-index: 0; 
 }
@@ -372,8 +372,8 @@ footer {
     transform: translate(-50%, -50%); 
     
     /* Guarantees the video covers the entire 100vh area */
-    min-width: 80%; 
-    min-height: 80%; 
+    min-width: 60%; 
+    min-height: 60%; 
     
     width: auto; /* Allow natural scaling */
     height: auto;
@@ -476,6 +476,7 @@ footer {
         padding: 1.5em 1em;
     }
 }
+
 
 
 
