@@ -337,7 +337,7 @@ footer {
    MOBILE VIEW OPTIMIZATION
    (Small Devices: Phones)
    --------------------------------- */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
 
     /* GLOBAL TEXT SCALING */
     body {
@@ -357,7 +357,7 @@ footer {
        HERO SECTION (Mobile Fix)
        --------------------------------- */
     .hero {
-        height: 100vh;
+        height: 110vh;
        position: relative;
      
         padding-bottom: 2em;
@@ -392,7 +392,7 @@ footer {
     }
 
     .names {
-        font-size: 5em;
+        font-size: 6em;
         line-height: 1.2;
     }
 
@@ -476,6 +476,7 @@ footer {
         padding: 1.5em 1em;
     }
 }
+
 
 
 
