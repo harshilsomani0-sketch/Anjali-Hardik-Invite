@@ -365,15 +365,15 @@ footer {
 
    .hero-video {
     position: absolute;
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
+    top: 20%; /* Center vertically */
+    left: 20%; /* Center horizontally */
     
     /* CRITICAL: Shifts the video back by half its size, making its center align with container's center */
     transform: translate(-50%, -50%); 
     
     /* Guarantees the video covers the entire 100vh area */
-    min-width: 100%; 
-    min-height: 100%; 
+    min-width: 80%; 
+    min-height: 80%; 
     
     width: auto; /* Allow natural scaling */
     height: auto;
@@ -476,6 +476,7 @@ footer {
         padding: 1.5em 1em;
     }
 }
+
 
 
 
