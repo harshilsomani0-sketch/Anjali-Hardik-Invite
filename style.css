@@ -61,8 +61,8 @@ p {
     min-width: 100%; 
     min-height: 100%; 
     
-    width: 50%; /* Allow natural scaling */
-    height: 0%;
+    width: auto; /* Allow natural scaling */
+    height: auto;
     object-fit: cover; /* Fallback for scaling */
     z-index: 0; 
 }
@@ -357,7 +357,7 @@ footer {
        HERO SECTION (Mobile Fix)
        --------------------------------- */
     .hero {
-        height: 110vh;
+        height: 90vh;
        position: relative;
      
         padding-bottom: 2em;
@@ -375,8 +375,8 @@ footer {
     min-width: 100%; 
     min-height: 100%; 
     
-    width: 50%; /* Allow natural scaling */
-    height: 0%;
+    width: auto; /* Allow natural scaling */
+    height: auto;
     object-fit: cover; /* Fallback for scaling */
     z-index: 0; 
 }
@@ -392,7 +392,7 @@ footer {
     }
 
     .names {
-        font-size: 6em;
+        font-size: 5em;
         line-height: 1.2;
     }
 
@@ -476,6 +476,7 @@ footer {
         padding: 1.5em 1em;
     }
 }
+
 
 
 
