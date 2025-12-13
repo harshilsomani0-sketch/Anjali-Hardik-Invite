@@ -357,19 +357,28 @@ footer {
        HERO SECTION (Mobile Fix)
        --------------------------------- */
     .hero {
-        height: 70vh;
+        height: 120vh;
         justify-content: flex-end;
         padding-bottom: 2em;
     }
 
-    .hero-video {
-        position: absolute;
-        width: 50%;
-        height: 50%;
-        min-width: 100%;
-        min-height: 100%;
-        object-fit: cover;
-    }
+   .hero-video {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    
+    /* CRITICAL: Shifts the video back by half its size, making its center align with container's center */
+    transform: translate(-50%, -50%); 
+    
+    /* Guarantees the video covers the entire 100vh area */
+    min-width: 100%; 
+    min-height: 100%; 
+    
+    width: 50%; /* Allow natural scaling */
+    height: 0%;
+    object-fit: cover; /* Fallback for scaling */
+    z-index: 0; 
+}
 
     .hero-text-container {
         padding: 2em 1em;
@@ -466,6 +475,7 @@ footer {
         padding: 1.5em 1em;
     }
 }
+
 
 
 
