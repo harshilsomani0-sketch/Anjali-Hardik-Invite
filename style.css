@@ -364,7 +364,7 @@ footer {
     }
 
    .hero-video {
-    position: absolute;
+    position: center;
     top: 20%; /* Center vertically */
     left: 20%; /* Center horizontally */
     
@@ -476,6 +476,7 @@ footer {
         padding: 1.5em 1em;
     }
 }
+
 
 
 
