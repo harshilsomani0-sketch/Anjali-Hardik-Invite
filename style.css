@@ -1,0 +1,493 @@
+/* GLOBAL STYLES & FONT SETUP */
+:root {
+    --color-primary: #333; /* Dark text */
+    --color-accent: #B8860B; /* Muted Gold for accents */
+    --color-background-alt: #F8F8F8; /* Light gray for card background */
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Montserrat', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--color-primary);
+    line-height: 1.6;
+    background-color: white;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+p {
+    text-align: center;
+    padding: 0 1.5em; 
+}
+
+/* ---------------------------------
+   SECTION 1: THE HERO (Video Opener)
+   --------------------------------- */
+.hero {
+    height: 139vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    position: relative; /* CRITICAL: Establishes context for absolute positioning */
+    overflow: hidden; /* CRITICAL: Prevents scrollbars if video overshoots */
+    background-color: #333; /* Fallback/background color */
+}
+
+/* FIX: Full-Screen Video Fit */
+.hero-video {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    
+    /* CRITICAL: Shifts the video back by half its size, making its center align with container's center */
+    transform: translate(-50%, -50%); 
+    
+    /* Guarantees the video covers the entire 100vh area */
+    min-width: 100%; 
+    min-height: 100%; 
+    
+    width: 50%; /* Allow natural scaling */
+    height: 0;
+    object-fit: cover; /* Fallback for scaling */
+    z-index: 0; 
+}
+
+/* Overlay for text readability */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Dark gradient for text visibility */
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+    z-index: 1;
+}
+
+.hero-text-container {
+    padding: 3em 1em 3em;
+    z-index: 2;
+}
+
+.hero-intro {
+    font-family: var(--font-sans);
+    font-size: 2.0em;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    margin-bottom: 2em;
+}
+
+.names {
+    font-size: 12em;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.names span {
+    display: block;
+    font-size: 2.0em;
+    font-weight: 400;
+    margin: 0.1em 0;
+}
+
+.hero-date {
+    font-family: var(--font-sans);
+    font-size: 2.0em;
+    letter-spacing: 0.15em;
+    margin-top: 1em;
+}
+
+.scroll-indicator {
+    font-size: 0.8em;
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+    padding-bottom: 1em;
+    z-index: 2;
+}
+
+/* ---------------------------------
+   SECTION 2: INVITATION MESSAGE
+   --------------------------------- */
+.invitation-message {
+    padding: 4em 0;
+}
+
+.invitation-message h2 {
+    font-size: 2em;
+}
+
+.invitation-message p {
+    margin-bottom: 1.5em;
+    font-size: 1.1em;
+}
+
+.divider {
+    width: 60px;
+    height: 1px;
+    background-color: var(--color-accent);
+    margin: 1.5em auto;
+}
+
+.verse {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #666;
+}
+
+
+/* ---------------------------------
+   SECTION 2.1: PRE-WEDDING CELEBRATIONS 
+   --------------------------------- */
+.pre-wedding-events-section {
+    background: url('subtle-texture.jpg') no-repeat center center/cover;
+    background-color: white; 
+    padding: 4em 1em 2em;
+    text-align: center;
+    position: relative;
+}
+
+.pre-wedding-events-section h2 {
+    font-size: 2em;
+    color: var(--color-primary);
+    margin-bottom: 0.5em;
+}
+
+.intro-note {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 2em;
+}
+
+.events-cards-container {
+    display: flex;
+    flex-direction: column; /* MOBILE STACKING DEFAULT */
+    gap: 25px;
+    padding: 0 10px;
+}
+
+/* Base Card Styling */
+.event-card {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2.5em 1.5em;
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    text-align: center;
+    z-index: 5; 
+}
+
+/* Card Content Styling */
+.event-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5em;
+    font-weight: 500;
+    color: var(--color-accent);
+    margin-bottom: 0.8em;
+}
+
+.card-divider-accent {
+    width: 40px;
+    height: 1px;
+    background-color: var(--color-accent);
+    margin: 1.5em auto;
+}
+
+.event-card p {
+    font-size: 1em;
+    padding: 0;
+    margin-bottom: 0.8em;
+}
+
+/* HOVER EFFECT */
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+/* ---------------------------------
+   SECTION 3: THE DETAILS (Main Wedding Details)
+   --------------------------------- */
+.details-section {
+    background: url('details-texture.jpg') no-repeat center center/cover;
+    background-color: #f0f0f0; 
+    position: relative; 
+    z-index: 0;
+    padding: 3em 1em;
+}
+
+/* Overlay for Readability */
+.details-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.2); 
+    z-index: 1; 
+}
+
+/* Ensure content is above the background and the overlay */
+.detail-block, .rsvp-button {
+    position: relative;
+    z-index: 2;
+}
+
+.detail-block {
+    margin-bottom: 2em;
+}
+
+.detail-block h3 {
+    color: var(--color-accent);
+    font-size: 1.4em;
+    margin-bottom: 0.5em;
+}
+
+.rsvp-button {
+    display: block;
+    width: 80%;
+    max-width: 300px;
+    margin: 3em auto 0;
+    padding: 1em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.rsvp-button:hover {
+    background-color: var(--color-accent);
+    color: white;
+}
+
+/* ---------------------------------
+   SECTION 4: MAP & CLOSER & FOOTER
+   --------------------------------- */
+.closer-section {
+    padding: 4em 1em;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 150px;
+    background-color: #e9e9e9;
+    margin: 1.5em auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-placeholder a {
+    color: var(--color-primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-primary);
+    padding-bottom: 2px;
+}
+
+footer {
+    padding: 2em 0;
+    background-color: #333;
+    color: #aaa;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+/* ---------------------------------
+   MEDIA QUERIES (DESKTOP LAYOUT)
+   --------------------------------- */
+@media (min-width: 768px) {
+    /* Hero Text Size */
+    .names {
+        font-size: 5em; 
+    }
+
+    /* Side-by-Side Cards for Pre-Wedding Events */
+    .events-cards-container {
+        flex-direction: row; /* DESKTOP: Layout cards side-by-side */
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .event-card {
+        flex: 1; /* Ensures cards share space equally */
+    }
+}
+/* ---------------------------------
+   MOBILE VIEW OPTIMIZATION
+   (Small Devices: Phones)
+   --------------------------------- */
+@media (max-width: 768px) {
+
+    /* GLOBAL TEXT SCALING */
+    body {
+        font-size: 14px;
+    }
+
+    h1, h2, h3 {
+        text-align: center;
+    }
+
+    p {
+        padding: 0 1em;
+        font-size: 1em;
+    }
+
+    /* ---------------------------------
+       HERO SECTION (Mobile Fix)
+       --------------------------------- */
+    .hero {
+        height: 60vh;
+       position: relative;
+     
+        padding-bottom: 2em;
+    }
+
+   .hero-video {
+    position: center;
+    top: 20%; /* Center vertically */
+    left: 20%; /* Center horizontally */
+    
+    /* CRITICAL: Shifts the video back by half its size, making its center align with container's center */
+    transform: translate(-50%, -50%); 
+    
+    /* Guarantees the video covers the entire 100vh area */
+    min-width: 60%; 
+    min-height: 60%; 
+    
+    width: auto; /* Allow natural scaling */
+    height: auto;
+    object-fit: cover; /* Fallback for scaling */
+    z-index: 0; 
+}
+
+    .hero-text-container {
+        padding: 2em 1em;
+    }
+
+    .hero-intro {
+        font-size: 1em;
+        letter-spacing: 0.12em;
+        margin-bottom: 1em;
+    }
+
+    .names {
+        font-size: 5em;
+        line-height: 1.2;
+    }
+
+    .names span {
+        font-size: 1.5em;
+    }
+
+    .hero-date {
+        font-size: 2.0em;
+        letter-spacing: 0.1em;
+    }
+
+    .scroll-indicator {
+        font-size: 1.5em;
+        padding-bottom: 0.5em;
+    }
+
+    /* ---------------------------------
+       INVITATION MESSAGE
+       --------------------------------- */
+    .invitation-message {
+        padding: 3em 0;
+    }
+
+    .invitation-message h2 {
+        font-size: 1.6em;
+    }
+
+    .invitation-message p {
+        font-size: 1em;
+    }
+
+    /* ---------------------------------
+       PRE-WEDDING EVENTS
+       --------------------------------- */
+    .pre-wedding-events-section {
+        padding: 3em 1em 1em;
+    }
+
+    .events-cards-container {
+        gap: 20px;
+        padding: 0;
+    }
+
+    .event-card {
+        padding: 2em 1.2em;
+        border-radius: 6px;
+    }
+
+    .event-card h3 {
+        font-size: 1.3em;
+    }
+
+    /* ---------------------------------
+       DETAILS SECTION
+       --------------------------------- */
+    .details-section {
+        padding: 2.5em 1em;
+    }
+
+    .detail-block h3 {
+        font-size: 1.2em;
+    }
+
+    /* RSVP BUTTON */
+    .rsvp-button {
+        width: 90%;
+        font-size: 0.9em;
+        padding: 0.9em;
+    }
+
+    /* ---------------------------------
+       MAP & FOOTER
+       --------------------------------- */
+    .map-placeholder {
+        height: 120px;
+    }
+
+    footer {
+        font-size: 0.75em;
+        padding: 1.5em 1em;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
