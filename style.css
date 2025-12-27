@@ -524,4 +524,55 @@ h1, h2, h3, .gujarati-name {
     .poem-content p {
         font-size: 1rem;
     }
+
+}
+/* --- LOCATION BUTTONS --- */
+.location-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Space between buttons */
+    margin: 20px 0;
+    flex-wrap: wrap; /* Stacks on small mobile screens */
+}
+
+.loc-btn {
+    background: var(--maroon);
+    color: #fff; /* White Text */
+    padding: 12px 25px;
+    border-radius: 50px; /* Rounded pill shape */
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif; /* Matching font */
+    font-size: 1rem;
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.loc-btn i {
+    color: var(--gold); /* Gold Icon */
+    font-size: 1.1rem;
+}
+
+/* Hover Effect */
+.loc-btn:hover {
+    background: var(--gold);
+    color: var(--maroon);
+    transform: translateY(-3px); /* Moves up slightly */
+    box-shadow: 0 6px 12px rgba(128, 0, 0, 0.3);
+}
+
+.loc-btn:hover i {
+    color: var(--maroon);
+}
+
+/* Mobile Adjustment */
+@media (max-width: 400px) {
+    .loc-btn {
+        width: 100%; /* Full width buttons on very small phones */
+        justify-content: center;
+    }
 }
