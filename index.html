@@ -15,12 +15,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <div id="welcome-modal" class="welcome-overlay">
+        <div class="welcome-content">
+            <div class="ganesh-icon">
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                    <path d="M50 10 C30 10 15 25 15 45 C15 65 30 80 50 80 C70 80 85 65 85 45" fill="none" stroke="#800000" stroke-width="3"/>
+                    <text x="50" y="55" font-family="'Noto Serif Gujarati', serif" font-size="40" text-anchor="middle" fill="#800000">ॐ</text>
+                </svg>
+            </div>
+            <h2>Anjali & Hardik</h2>
+            <p>We request the honor of your presence</p>
+            
+            <button class="enter-btn" onclick="enterWebsite()">
+                <i class="fas fa-envelope-open-text"></i> Open Invitation
+            </button>
+        </div>
+    </div>
 
     <button id="music-btn" class="music-btn" onclick="toggleMusic()">
         <i class="fas fa-music"></i>
     </button>
     <audio id="wedding-music" loop>
-    <source src="wedding.mp3" type="audio/mp3">
+    <source src="Wedding.mp3" type="audio/mp3">
 </audio>
 
     <div class="main-wrapper">
@@ -46,7 +62,7 @@
                 <div class="groom fade-in-delay-1">
                     <h1 class="gujarati-name">અંજલી</h1>
                     <span class="english-name">Anjali</span>
-                    <p class="parent-names">(પુત્રી સ્વ.શ્રી નીતિનભાઈ અને ગં.સ્વ.અમિતાબેન સોમાણી)</p>
+                    <p class="parent-names">(પુત્રી સ્વ.શ્રી નીતિનભાઈ અને શ્રીમતી અમિતાબેન સોમાણી)</p>
                 </div>
 
                 <div class="weds-badge zoom-in">
@@ -59,7 +75,24 @@
                     <p class="parent-names">(પુત્ર શ્રી નવનીતભાઈ અને શ્રીમતી લતાબેન વેલાણી)</p>
                 </div>
             </section>
-
+            <div class="countdown-container fade-in-up">
+    <div class="time-box">
+        <span id="days">47</span>
+        <p>Days</p>
+    </div>
+    <div class="time-box">
+        <span id="hours">11</span>
+        <p>Hours</p>
+    </div>
+    <div class="time-box">
+        <span id="minutes">04</span>
+        <p>Mins</p>
+    </div>
+    <div class="time-box">
+        <span id="seconds">00</span>
+        <p>Secs</p>
+    </div>
+</div>
             <div class="divider">
                 <span class="floral-icon">❀</span>
             </div>
@@ -123,7 +156,7 @@
                         </div>
                         <div class="venue-box-mini">
                             <p class="venue-name">Bhavsar Bhavan</p>
-                            <p class="venue-address">૧૬૫૨,મોખડાજી સર્કલ રોડ, ઘોઘા રોડ, ભાવનગર,ગુજરાત ૩૬૪૦૦૧</p>
+                            <p class="venue-address"> ૧૬૫૨,મોખડાજી સર્કલ રોડ, ઘોઘા રોડ, ભાવનગર,ગુજરાત ૩૬૪૦૦૧.</p>
                             <a href="https://maps.app.goo.gl/gZEabukJsg32QLkcA" target="_blank" class="map-link">Map <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -164,7 +197,7 @@
                         <li>અ.સૌ.શ્વેતાબેન ધવલકુમાર સોમાણી</li>
                         <li>અ.સૌ.ઝરણાબેન ગૌરાંગકુમાર માલવણીયા</li>
                         <li>અ.સૌ.મનાલી મિતેષકુમાર રાણપુરા</li>
-                        <li>કુ. દીક્ષાબેન સંદીપકુમાર સોમાણી</li>
+                        <li>કુ. દિશાબેન સંદીપકુમાર સોમાણી</li>
                     </ul>
                 </div>
 
@@ -216,10 +249,14 @@
                         <i class="fas fa-home"></i> Home
                     </a>
                 </div>
-
+<div style="margin-top: 20px;">
+    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding:+Anjali+Weds+Hardik&dates=20260212T160000/20260213T170000&details=Wedding+Ceremony+of+Anjali+and+Hardik&location=Bhavsar+Bhavan,+Bhavnagar" target="_blank" class="save-date-btn">
+        <i class="far fa-calendar-plus"></i> Save the Date
+    </a>
+</div>
             <footer class="card-footer">
                 <p class="blessing">“તમારા આશીર્વાદ અને શુભેચ્છાઓની અપેક્ષા સહ”</p>
-                <p class="family-name">લિ. સ્વ.શ્રી નીતિનભાઈ અને ગં.સ્વ.અમિતાબેન સોમાણી પરિવાર.</p>
+                <p class="family-name">લિ. સ્વ.શ્રી નીતિનભાઈ અને શ્રીમતી અમિતાબેન સોમાણી પરિવાર.</p>
             </footer>
             
         </div>
@@ -256,11 +293,66 @@
                 btn.classList.remove("playing");
             }
         }
+        // Function to create falling petals
+function createPetal() {
+    const petal = document.createElement('div');
+    petal.classList.add('petal');
+    
+    // Random Size & Position
+    const size = Math.random() * 10 + 10 + 'px';
+    petal.style.width = size;
+    petal.style.height = size;
+    petal.style.left = Math.random() * 100 + 'vw';
+    petal.style.background = Math.random() > 0.5 ? '#800000' : '#D4AF37'; // Random Maroon or Gold
+
+    // Random Animation Duration
+    petal.style.animationDuration = Math.random() * 3 + 4 + 's';
+    
+    document.body.appendChild(petal);
+
+    // Remove petal after animation to keep site fast
+    setTimeout(() => {
+        petal.remove();
+    }, 7000);
+}
+
+// Generate a petal every 300ms
+setInterval(createPetal, 300);
+// Countdown Logic
+const weddingDate = new Date("Feb 13, 2026 11:00:00").getTime(); // Updated Date
+
+setInterval(function() {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    // Time calculations
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display results
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+}, 1000);
+// Function called when they click "Open Invitation"
+        function enterWebsite() {
+            var modal = document.getElementById('welcome-modal');
+            var audio = document.getElementById("wedding-music");
+            var btn = document.getElementById("music-btn");
+
+            // 1. Hide the modal smoothly
+            modal.classList.add('hidden');
+
+            // 2. Start the Music
+            audio.play().then(() => {
+                btn.classList.add("playing"); // Make the music icon spin
+            }).catch(error => {
+                console.log("Audio play failed (user might have blocked it):", error);
+            });
+        }
     </script>
 </body>
-
 </html>
-
-
-
-
