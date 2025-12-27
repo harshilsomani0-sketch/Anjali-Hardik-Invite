@@ -1,0 +1,527 @@
+/* --- Variables & Reset --- */
+:root {
+    --bg-color: #FFFBF0; /* Ivory Cream */
+    --card-bg: #ffffff;
+    --maroon: #800000;
+    --gold: #D4AF37;
+    --gold-light: #f3e5ab;
+    --gold-gradient: linear-gradient(135deg, #B8860B, #FFD700, #B8860B);
+    --text-dark: #2c2c2c;
+    --shadow-soft: 0 10px 30px rgba(128, 0, 0, 0.08);
+    --shadow-hover: 0 15px 35px rgba(128, 0, 0, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image: radial-gradient(#e0d6c2 1px, transparent 1px);
+    background-size: 20px 20px;
+    font-family: 'Playfair Display', serif;
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px 10px;
+}
+
+/* --- Main Wrapper --- */
+.main-wrapper {
+    width: 100%;
+    max-width: 550px; /* Slightly narrower for mobile elegance */
+    perspective: 1000px;
+}
+
+.card-container {
+    background: var(--card-bg);
+    padding: 40px 25px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    position: relative;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    overflow: hidden;
+}
+
+/* Double Border - Inner Gold Frame */
+.card-container::before {
+    content: '';
+    position: absolute;
+    top: 12px; left: 12px; right: 12px; bottom: 12px;
+    border: 1.5px solid var(--maroon);
+    border-radius: 15px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.card-container::after {
+    content: '';
+    position: absolute;
+    top: 16px; left: 16px; right: 16px; bottom: 16px;
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* --- Typography --- */
+h1, h2, h3, .gujarati-name {
+    font-family: 'Noto Serif Gujarati', serif;
+    color: var(--maroon);
+}
+
+.shloka {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--maroon);
+}
+
+.invite-text {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    color: #B8860B;
+}
+
+.gujarati-name {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    background: -webkit-linear-gradient(45deg, #800000, #a52a2a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.english-name {
+    display: block;
+    font-size: 1rem;
+    color: #888;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+.parent-names {
+    font-family: 'Noto Serif Gujarati', serif;
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 8px;
+}
+
+/* --- Sections --- */
+.card-header, .couple-section {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 25px;
+}
+
+.weds-badge {
+    margin: 15px auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--gold-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(184, 134, 11, 0.4);
+}
+
+.divider {
+    margin: 25px 0;
+    position: relative;
+    opacity: 0.6;
+}
+
+.divider::before, .divider::after {
+    content: '';
+    display: inline-block;
+    width: 30%;
+    height: 1px;
+    background: var(--gold);
+    vertical-align: middle;
+}
+
+.floral-icon {
+    color: var(--maroon);
+    font-size: 1.2rem;
+    margin: 0 10px;
+    vertical-align: middle;
+}
+
+/* --- NEW: Advanced Timeline Events --- */
+.events-timeline {
+    position: relative;
+    z-index: 5;
+    padding: 10px 0;
+}
+
+.gold-text {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    display: inline-block;
+}
+
+/* The vertical line connecting events */
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 60px;
+    bottom: 20px;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--gold-light), transparent);
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+.event-card {
+    background: #fff;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Subtle Glass Effect */
+    background: linear-gradient(145deg, #ffffff, #fffdf5);
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--gold);
+}
+
+/* Special style for the Wedding card */
+.main-event {
+    border: 1.5px solid var(--maroon);
+    background: #fffbf0;
+}
+
+.event-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--maroon);
+    color: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin: -45px auto 10px auto; /* Pull icon up */
+    border: 3px solid #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.event-title {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+    color: var(--maroon);
+}
+
+.event-english {
+    font-size: 0.9rem;
+    color: #B8860B;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.event-meta {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 8px;
+    font-family: sans-serif;
+}
+
+.event-meta i {
+    color: var(--gold);
+    margin-right: 5px;
+}
+
+.event-location {
+    font-size: 0.95rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Mini Venue Box inside Wedding Card */
+.venue-box-mini {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(128,0,0,0.2);
+}
+
+.venue-name {
+    font-weight: bold;
+    color: var(--maroon);
+}
+
+.map-link {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: var(--maroon);
+    text-decoration: none;
+    border-bottom: 1px solid var(--maroon);
+    transition: color 0.3s;
+}
+
+/* --- RSVP Grid --- */
+.rsvp-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.rsvp-item {
+    background: #f9f9f9;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.rsvp-item a {
+    color: var(--maroon);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* --- Footer --- */
+.card-footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(128,0,0,0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.blessing {
+    font-style: italic;
+    font-family: 'Noto Serif Gujarati', serif;
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+/* --- Ornaments --- */
+.corner-ornament {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-image: radial-gradient(circle at center, transparent 60%, var(--gold) 61%, transparent 63%);
+    opacity: 0.3;
+    z-index: 0;
+}
+.top-left { top: 0; left: 0; border-radius: 0 0 100% 0; border-right: 2px solid var(--maroon); border-bottom: 2px solid var(--maroon); }
+.top-right { top: 0; right: 0; border-radius: 0 0 0 100%; border-left: 2px solid var(--maroon); border-bottom: 2px solid var(--maroon); }
+.bottom-left { bottom: 0; left: 0; border-radius: 0 100% 0 0; border-right: 2px solid var(--maroon); border-top: 2px solid var(--maroon); }
+.bottom-right { bottom: 0; right: 0; border-radius: 100% 0 0 0; border-left: 2px solid var(--maroon); border-top: 2px solid var(--maroon); }
+
+/* --- Music Button --- */
+.music-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--maroon);
+    color: white;
+    border: 2px solid var(--gold);
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 100;
+    transition: all 0.3s;
+}
+.music-btn.playing { animation: spin 4s linear infinite; background: var(--gold); border-color: var(--maroon); }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* --- Animations --- */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes zoomIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
+
+.fade-in-up { animation: fadeInUp 1s ease-out forwards; }
+.zoom-in { animation: zoomIn 0.8s ease-out forwards; animation-delay: 0.5s; opacity: 0; }
+.fade-in-delay-1 { animation: fadeInUp 0.8s ease-out forwards; animation-delay: 0.3s; opacity: 0; }
+.fade-in-delay-2 { animation: fadeInUp 0.8s ease-out forwards; animation-delay: 0.7s; opacity: 0; }
+
+.fade-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 480px) {
+    .card-container { padding: 30px 15px; }
+    .gujarati-name { font-size: 2rem; }
+    .event-meta { flex-direction: column; gap: 5px; }
+    .timeline-line { display: none; /* Hide line on very small screens for cleanliness */ }
+    .event-icon { margin-top: -30px; }
+}
+/* --- New Styles for Extended Details --- */
+
+/* Sub-Shlokas in Header */
+.sub-shloka {
+    font-size: 1rem;
+    margin-top: -5px;
+    font-weight: 400;
+    color: #555;
+}
+
+/* Section Headers (Small) */
+.section-header-small {
+    font-family: 'Noto Serif Gujarati', serif;
+    font-size: 1.5rem;
+    color: var(--maroon);
+    margin: 20px 0 15px;
+    position: relative;
+    display: inline-block;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 5px;
+}
+
+/* --- POEM (Taho) SECTION --- */
+.poem-section {
+    background: #fffcf5;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px dashed var(--gold);
+    margin: 20px 0;
+}
+
+.poem-content p {
+    font-family: 'Noto Serif Gujarati', serif;
+    font-size: 1.1rem;
+    color: #444;
+    font-style: italic;
+    line-height: 1.8;
+    margin-bottom: 5px;
+}
+
+/* --- MOSAL PAKSH --- */
+.mosal-section {
+    margin-bottom: 30px;
+}
+.highlight-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--maroon);
+}
+
+/* --- FAMILY GRID (Darshanabhilashi & Snehadhin) --- */
+.family-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.family-col {
+    flex: 1;
+    min-width: 250px; /* Stacks on mobile */
+    background: #fdfdfd;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.col-title {
+    text-align: center;
+    color: var(--gold);
+    background: var(--maroon);
+    padding: 5px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.name-list {
+    list-style: none;
+    padding: 0;
+}
+
+.name-list li {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #ddd;
+    font-family: 'Noto Serif Gujarati', serif;
+}
+
+.name-list li:last-child {
+    border-bottom: none;
+}
+
+/* --- ADDRESS & FIRM --- */
+.address-box {
+    background: #fff8e1;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--gold);
+    margin-bottom: 20px;
+}
+
+.main-address {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--maroon);
+    margin-bottom: 10px;
+}
+
+.phone-link {
+    margin-top: 10px;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.shubhechhak-box {
+    border-top: 1px dashed var(--maroon);
+    padding-top: 15px;
+    margin-top: 15px;
+    font-size: 0.95rem;
+}
+
+.shubhechhak-box strong {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--maroon);
+    margin: 5px 0;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+    .family-grid {
+        flex-direction: column;
+    }
+    .poem-content p {
+        font-size: 1rem;
+    }
+}
