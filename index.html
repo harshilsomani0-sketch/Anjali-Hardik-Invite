@@ -97,7 +97,7 @@
                 <span class="floral-icon">❀</span>
             </div>
 
-            <section class="events-timeline">
+           <section id="events" class="events-timeline">
                 <h3 class="gold-text">મંગલ પ્રસંગો</h3>
                 
                 <div class="timeline-line"></div>
@@ -219,6 +219,20 @@
             <div class="divider">
                 <span class="floral-icon">❀</span>
             </div>
+               <section id="gallery" class="gallery-section fade-on-scroll">
+                <div class="ornamental-header">
+                    <h3 class="section-header-small">પ્રી-વેડિંગ ઝલક</h3>
+                </div>
+                <p class="swipe-hint"><i class="fas fa-hand-pointer"></i> Swipe to see more</p>
+                <div class="gallery-container">
+                    <img src="p1.jpeg" class="gallery-item" alt="coming soon" onclick="openLightbox(this)">
+                    <img src="p2.jpeg" class="gallery-item" alt="coming soon" onclick="openLightbox(this)">
+                    <img src="p3.jpeg" class="gallery-item" alt="coming soon" onclick="openLightbox(this)">
+                    <img src="p4.jpeg" class="gallery-item" alt="coming soon" onclick="openLightbox(this)">
+                    <img src="p5.jpeg" class="gallery-item" alt="coming soon" onclick="openLightbox(this)">
+                    <img src="p6.jpeg" class="gallery-item" alt="coming soon" onclick="openLightbox(this)">
+                    </div>
+            </section>
 
             <section class="nimantrak-section fade-on-scroll">
                 
@@ -356,7 +370,21 @@ setInterval(function() {
             });
         }
     </script>
+     <nav class="glass-dock">
+        <a href="#" class="dock-item" onclick="window.scrollTo(0,0); return false;">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#events" class="dock-item">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Events</span>
+        </a>
+        <a href="#gallery" class="dock-item">
+            <i class="fas fa-images"></i>
+            <span>Photos</span>
+        </a>
 </body>
 </html>
+
 
 
