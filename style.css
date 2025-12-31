@@ -1008,4 +1008,92 @@ h1, h2, h3, .gujarati-name {
 .name-list li:last-child {
     border-bottom: none;
 }
+/* --- GALLERY SECTION STYLING --- */
+.gallery-section {
+    background: #fff;
+    padding: 20px 0 30px 0; /* No side padding to let photos touch edges on mobile */
+    border-radius: 15px;
+    border: 1px solid rgba(212, 175, 55, 0.3); /* Soft Gold Border */
+    margin: 30px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+.gallery-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 15px;
+    padding: 10px 20px 25px 20px; /* Padding for scrollbar/shadow space */
+    -webkit-overflow-scrolling: touch;
+}
+.gallery-item {
+    scroll-snap-align: center; width: 200px; height: 300px; object-fit: cover;
+    border-radius: 10px; border: 2px solid var(--gold); box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    flex-shrink: 0; transition: transform 0.3s ease; cursor: pointer;
+}
+.gallery-item:hover { transform: scale(1.02); }
+.gallery-container::-webkit-scrollbar { height: 6px; }
+.gallery-container::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+.swipe-hint { font-size: 0.8rem; color: #888; margin-bottom: 10px; font-style: italic; animation: bounceRight 2s infinite; }
+@keyframes bounceRight { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+/* --- FLOATING GLASS DOCK (NAVIGATION) --- */
+.glass-dock {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.9); /* Glassy White */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(212, 175, 55, 0.5); /* Gold Border */
+    padding: 10px 30px;
+    border-radius: 50px;
+    display: flex;
+    gap: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    z-index: 10000; /* Stays on top of everything */
+    transition: all 0.3s ease;
+}
+
+.dock-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #555;
+    transition: 0.3s;
+}
+
+.dock-item i {
+    font-size: 1.3rem;
+    margin-bottom: 3px;
+    color: var(--maroon);
+}
+
+.dock-item span {
+    font-family: sans-serif;
+    font-size: 0.7rem;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+/* Hover Effect */
+.dock-item:hover {
+    transform: translateY(-5px);
+}
+.dock-item:hover i {
+    color: var(--gold);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+    .glass-dock {
+        bottom: 15px;
+        width: 90%;
+        justify-content: space-around; /* Spreads icons evenly */
+        padding: 10px 15px;
+        gap: 0;
+    }
+}
+
 
