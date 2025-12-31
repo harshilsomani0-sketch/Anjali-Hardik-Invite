@@ -369,6 +369,22 @@ setInterval(function() {
                 console.log("Audio play failed (user might have blocked it):", error);
             });
         }
+        // NEW FEATURE 3: Lightbox for Photos
+        function openLightbox(img) {
+            let lightbox = document.getElementById('lightbox-overlay');
+            if (!lightbox) {
+                lightbox = document.createElement('div');
+                lightbox.id = 'lightbox-overlay';
+                lightbox.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:100000;display:flex;justify-content:center;align-items:center;cursor:zoom-out;';
+                lightbox.onclick = function() { this.remove(); };
+                document.body.appendChild(lightbox);
+            }
+            const largeImg = document.createElement('img');
+            largeImg.src = img.src;
+            largeImg.style.cssText = 'max-width:90%;max-height:90%;border:4px solid #fff;border-radius:5px;box-shadow:0 0 20px rgba(0,0,0,0.5);';
+            lightbox.innerHTML = '';
+            lightbox.appendChild(largeImg);
+        }
     </script>
      <nav class="glass-dock">
         <a href="#" class="dock-item" onclick="window.scrollTo(0,0); return false;">
@@ -385,6 +401,7 @@ setInterval(function() {
         </a>
 </body>
 </html>
+
 
 
 
