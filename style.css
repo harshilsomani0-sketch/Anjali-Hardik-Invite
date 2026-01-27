@@ -1531,5 +1531,54 @@ body {
     opacity: 1 !important;
     transform: none !important;
 }
+/* =========================================
+   FINAL GROUNDING FIX (ADD TO BOTTOM)
+   ========================================= */
+
+/* 1. Stop horizontal 'running' and overflow */
+html, body {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    margin: 0;
+    padding: 0;
+}
+
+/* 2. Fix the names and button from floating/sliding */
+.gate-center-body {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important; /* Forces perfect centering */
+    transition: none !important; /* Removes the sliding effect */
+    animation: none !important; /* Removes the floating up/side effect */
+    opacity: 1 !important;
+    width: 90% !important;
+}
+
+/* 3. Stop Ganesha and Names from bobbing up/down */
+.floating-ganesh, 
+.couple-names-grand, 
+.royal-open-btn-premium {
+    animation: none !important; /* Kills the float animation */
+    transform: none !important; /* Kills the side-drift */
+    opacity: 1 !important; /* Ensures they are always visible */
+}
+
+/* 4. Ground the inner content (Mangal Prasango) */
+#main-content, 
+.content-hidden, 
+.content-visible {
+    transform: none !important; /* Prevents the inner page from sliding up */
+    animation: none !important;
+}
+
+/* 5. Center the Event cards perfectly on mobile */
+.mangal-card, .event-card {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    transform: none !important; /* Stops cards from floating on hover */
+}
+
 
 
