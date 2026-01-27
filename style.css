@@ -1263,3 +1263,219 @@ h1, h2, h3, .gujarati-name {
     border-left: 2px solid var(--gold);
     padding-left: 10px;
 }
+/* --- Imports --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@700&family=Great+Vibes&family=Noto+Serif+Gujarati:wght@400;700&display=swap');
+
+/* --- Root Variables --- */
+:root {
+    --maroon: #800000;
+    --gold: #d4af37;
+    --ivory: #fffcf5;
+    --transition-gate: transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Global Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    background: var(--ivory);
+}
+
+/* --- 1. Outer Invitation Gate Wrapper --- */
+.gate-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10000;
+    display: flex;
+    perspective: 2000px; /* Stronger 3D depth */
+    background: #fff;
+    overflow: hidden;
+}
+
+.gate-flap {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: var(--transition-gate);
+    z-index: 2;
+}
+
+.left-gate { transform-origin: left; }
+.right-gate { transform-origin: right; }
+
+.outer-side {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--ivory);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: inset 0 0 50px rgba(128, 0, 0, 0.05);
+}
+
+/* Open State Triggered by JS */
+.gate-wrapper.opened .left-gate { transform: rotateY(-120deg); }
+.gate-wrapper.opened .right-gate { transform: rotateY(120deg); }
+
+/* --- 2. Central Content (Names & Button) --- */
+.gate-center-body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10020;
+    text-align: center;
+    width: 90%;
+    transition: opacity 0.8s ease;
+}
+
+.floating-ganesh {
+    width: 100px;
+    filter: drop-shadow(0 5px 15px rgba(212, 175, 55, 0.5));
+    animation: ganeshFloat 3s ease-in-out infinite;
+    margin-bottom: 20px;
+}
+
+.couple-names-grand {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    color: var(--maroon);
+    margin: 10px 0;
+    text-shadow: 2px 2px 0px rgba(212, 175, 55, 0.3);
+    line-height: 1.1;
+}
+
+.couple-names-grand .ampersand {
+    font-family: 'Great Vibes', cursive;
+    font-size: 5rem;
+    color: var(--gold);
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.royal-subtitle {
+    font-family: 'Noto Serif Gujarati', serif;
+    font-size: 1.4rem;
+    color: #555;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+}
+
+/* --- 3. Premium Open Button --- */
+.royal-open-btn-premium {
+    position: relative;
+    background: var(--maroon);
+    color: var(--gold);
+    padding: 18px 50px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border: 2px solid var(--gold);
+    cursor: pointer;
+    box-shadow: 0 15px 35px rgba(128, 0, 0, 0.4);
+    transition: all 0.5s ease;
+    overflow: hidden;
+}
+
+.royal-open-btn-premium:hover {
+    background: var(--gold);
+    color: var(--maroon);
+    transform: translateY(-5px);
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent);
+    animation: shine 3s infinite;
+}
+
+/* --- 4. Inner Content (Mangal Prasango) --- */
+.content-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease-in;
+}
+
+.content-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.event-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.event-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--maroon);
+}
+
+/* --- 5. Petal & Background Effects --- */
+.royal-background {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--ivory);
+    background-image: linear-gradient(to bottom, rgba(128, 0, 0, 0.05) 0%, transparent 40%);
+    z-index: -1;
+}
+
+.petal {
+    position: absolute;
+    background-color: #ff4d4d;
+    border-radius: 150% 0 150% 0;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 9999;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2));
+    animation: fall linear infinite;
+}
+
+.petal.gold {
+    background-color: var(--gold);
+    border-radius: 50%;
+}
+
+/* --- Animations --- */
+@keyframes ganeshFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes shine {
+    to { left: 150%; }
+}
+
+@keyframes fall {
+    0% { top: -10%; transform: translateX(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.8; }
+    100% { top: 110%; transform: translateX(100px) rotate(360deg); opacity: 0; }
+}
+
+/* --- Mobile View Optimization --- */
+@media (max-width: 768px) {
+    .couple-names-grand { font-size: 2.8rem; }
+    .couple-names-grand .ampersand { font-size: 3.2rem; }
+    .royal-subtitle { font-size: 1rem; letter-spacing: 2px; }
+    .royal-open-btn-premium { padding: 15px 30px; font-size: 1rem; }
+    .floating-ganesh { width: 80px; }
+}
+
