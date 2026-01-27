@@ -1341,10 +1341,6 @@ h1, h2, h3, .gujarati-name {
     animation: shine 3s infinite;
 }
 
-@keyframes shine {
-    to { left: 150%; }
-}
-
 /* --- Timeline Card Enhancement (Glassmorphism) --- */
 .event-card {
     background: rgba(255, 255, 255, 0.95);
@@ -1369,10 +1365,7 @@ h1, h2, h3, .gujarati-name {
     animation: float 3s ease-in-out infinite;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-}
+
 
 /* --- Gate Physics --- */
 .gate-wrapper {
@@ -1456,24 +1449,7 @@ h1, h2, h3, .gujarati-name {
         font-size: 1.1rem;
     }
 }
-.floating-ganesh {
-    width: 120px; /* Slightly bigger for the new look */
-    margin-bottom: 20px;
-    /* This creates a royal gold glow around the icon */
-    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));
-    animation: royalFloat 4s ease-in-out infinite;
-}
 
-@keyframes royalFloat {
-    0%, 100% { 
-        transform: translateY(0) scale(1); 
-        filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));
-    }
-    50% { 
-        transform: translateY(-15px) scale(1.05); 
-        filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.8));
-    }
-}
 /* 1. Background Styling */
 .royal-background {
     position: absolute;
@@ -1502,28 +1478,218 @@ h1, h2, h3, .gujarati-name {
     border-radius: 50%; /* Round gold confetti */
 }
 
-#petal-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw; /* Force full viewport width */
-    height: 100vh;
+/* 3D Gate Animation */
+.gate-wrapper {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100vh;
+    z-index: 10000;
+    display: flex;
+    perspective: 1500px;
+    background: #fff;
     overflow: hidden;
-    z-index: 2;
-    pointer-events: none;
 }
 
-@keyframes fall {
-    0% {
-        top: -10%;
-        transform: translateX(0) rotate(0deg);
+.gate-flap {
+    width: 50%; height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.outer-side {
+    position: absolute;
+    width: 100%; height: 100%;
+    background: #fffcf5;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.left-gate { transform-origin: left; }
+.right-gate { transform-origin: right; }
+
+/* Open State */
+.gate-wrapper.opened .left-gate { transform: rotateY(-120deg); }
+.gate-wrapper.opened .right-gate { transform: rotateY(120deg); }
+
+/* Main Content Reveal */
+.content-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease-in;
+}
+
+.content-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Central Body Management */
+.gate-center-body {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10020;
+    text-align: center;
+    transition: opacity 0.8s ease;
+}
+/* --- Royal Button with Shine --- */
+.royal-open-btn {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #800000 0%, #a52a2a 100%);
+    color: #d4af37; /* Gold */
+    padding: 16px 45px;
+    border: 2px solid #d4af37;
+    border-radius: 50px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(128, 0, 0, 0.4);
+    transition: all 0.4s ease;
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent);
+    animation: shine 3s infinite;
+}
+
+/* --- Timeline Card Enhancement (Glassmorphism) --- */
+.event-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(128, 0, 0, 0.1);
+    border-color: #800000;
+}
+
+/* --- Floating Animation for Ganesha --- */
+.floating-ganesh {
+    width: 100px;
+    filter: drop-shadow(0 5px 15px rgba(212, 175, 55, 0.5));
+    animation: float 3s ease-in-out infinite;
+}
+
+
+
+/* --- Gate Physics --- */
+.gate-wrapper {
+    perspective: 2000px; /* Stronger 3D depth */
+}
+
+.gate-flap {
+    transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* Import Royal Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@700&family=Great+Vibes&display=swap');
+
+/* 1. Grand Couple Names Styling */
+.couple-names-grand {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem; /* Massive size for impact */
+    color: #800000; /* Deep Maroon */
+    margin: 20px 0;
+    text-shadow: 2px 2px 0px rgba(212, 175, 55, 0.3); /* Subtle gold shadow */
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+
+.couple-names-grand .ampersand {
+    font-family: 'Great Vibes', cursive;
+    font-size: 5rem;
+    color: #d4af37; /* Gold */
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.royal-subtitle {
+    font-family: 'Noto Serif Gujarati', serif;
+    font-size: 1.4rem;
+    color: #555;
+    letter-spacing: 4px;
+    margin-bottom: 50px;
+}
+
+/* 2. Premium Button Styling */
+.royal-open-btn-premium {
+    position: relative;
+    background: #800000;
+    color: #d4af37;
+    padding: 20px 60px; /* Larger padding for a bigger button */
+    font-family: 'Cinzel', serif; /* Sharp, royal look */
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border: 3px solid #d4af37;
+    border-radius: 0; /* Sharp corners look more "Premium" for invitations */
+    cursor: pointer;
+    box-shadow: 0 15px 35px rgba(128, 0, 0, 0.4);
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    overflow: hidden;
+}
+
+.royal-open-btn-premium:hover {
+    background: #d4af37;
+    color: #800000;
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(212, 175, 55, 0.4);
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+/* Mobile Adjustments for Big Text */
+@media (max-width: 768px) {
+    .couple-names-grand {
+        font-size: 3rem;
     }
-    /* We use small, balanced sways so they stay in their lane */
-    25% { transform: translateX(15px) rotate(90deg); }
-    50% { transform: translateX(-15px) rotate(180deg); }
-    75% { transform: translateX(15px) rotate(270deg); }
-    100% {
-        top: 110%;
-        transform: translateX(0) rotate(360deg);
+    .couple-names-grand .ampersand {
+        font-size: 3.5rem;
+    }
+    .royal-open-btn-premium {
+        padding: 15px 40px;
+        font-size: 1.1rem;
     }
 }
+
+/* 1. Background Styling */
+.royal-background {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #fffcf5; /* Ivory base */
+    /* Silk Curtain Effect at Top */
+    background-image: linear-gradient(to bottom, rgba(128, 0, 0, 0.1) 0%, transparent 40%);
+    overflow: hidden;
+    z-index: 1;
+}
+/* 2. Petal Styling */
+.petal {
+    position: absolute;
+    background-color: #ff4d4d; /* Rose Red */
+    border-radius: 150% 0 150% 0; /* Petal shape */
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 2;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2));
+    animation: fall linear infinite;
+}
+
+/* Gold petal variation */
+.petal.gold {
+    background-color: #d4af37;
+    border-radius: 50%; /* Round gold confetti */
+}
+
