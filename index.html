@@ -424,20 +424,30 @@ document.querySelectorAll('.animate-on-scroll').forEach((el) => {
     const mainContent = document.getElementById('main-content');
     const centerBody = document.querySelector('.gate-center-body');
 
-    // 1. Open Gates & Fade Text
+    // 1. Open the gates
     gateWrapper.classList.add('opened');
-    if (centerBody) centerBody.style.opacity = '0';
 
-    // 2. Reveal Website Content
+    // 2. Hide the cover text instantly to prevent overlapping
+    if (centerBody) {
+        centerBody.style.opacity = '0';
+        centerBody.style.pointerEvents = 'none';
+    }
+
+    // 3. Reveal the main content with a simple FADE only (no floating)
     setTimeout(() => {
+        mainContent.style.visibility = 'visible';
+        mainContent.style.opacity = '1';
         mainContent.classList.add('content-visible');
-        document.body.style.overflow = 'flex';
-    }, 800);
+        
+        // Lock horizontal scroll
+        document.body.style.overflowX = 'hidden';
+        document.body.style.overflowY = 'auto';
+    }, 600);
 
-    // 3. Remove Gates from screen to allow interaction
+    // 4. Remove the gates to clean the screen
     setTimeout(() => {
         gateWrapper.style.display = 'none';
-    }, 2000);
+    }, 2500);
 }
    function createPetals() {
     const container = document.getElementById('petal-container');
@@ -495,6 +505,7 @@ window.onload = createPetals;
         </a>
 </body>
 </html>
+
 
 
 
