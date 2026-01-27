@@ -1478,5 +1478,58 @@ body {
     .royal-open-btn-premium { padding: 15px 30px; font-size: 1rem; }
     .floating-ganesh { width: 80px; }
 }
+/* --- GROUNDING THE COVER CONTENT --- */
+.gate-center-body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Forced centering without any movement */
+    transform: translate(-50%, -50%) !important;
+    width: 90%;
+    text-align: center;
+    z-index: 10020;
+    /* Remove any transition that causes floating */
+    transition: none !important; 
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Fix the Ganesha Icon to stop floating */
+.floating-ganesh {
+    animation: none !important;
+    transform: none !important;
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 100px;
+}
+
+/* Fix the Couple Names */
+.couple-names-grand {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    margin-bottom: 10px;
+}
+
+/* Fix the Button */
+.royal-open-btn-premium {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+/* --- GROUNDING THE INNER PAGE --- */
+#main-content {
+    transform: none !important;
+    animation: none !important;
+    opacity: 1; /* Ensure it is ready for the fade-in only */
+}
+
+/* Remove any 'fade-in-up' classes from your elements */
+.fade-in-up, .animate-on-scroll {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+}
 
 
