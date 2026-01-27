@@ -1286,13 +1286,3 @@ h1, h2, h3, .gujarati-name {
 .events-wrapper::-webkit-scrollbar {
     display: none;
 }
-@media (min-width: 768px) {
-    .events-wrapper {
-        justify-content: center; /* Centers cards on big screens */
-        flex-wrap: nowrap;
-        overflow-x: visible;
-    }
-    .mangal-card {
-        flex: 0 1 300px;
-    }
-}
