@@ -1263,3 +1263,36 @@ h1, h2, h3, .gujarati-name {
     border-left: 2px solid var(--gold);
     padding-left: 10px;
 }
+/* --- Force Events into a Single Line --- */
+.events-wrapper {
+    display: flex !important; /* Forces horizontal layout */
+    flex-direction: row !important; /* Ensures they stay in a line */
+    overflow-x: auto !important; /* Adds horizontal scroll if they don't fit */
+    scroll-snap-type: x mandatory; /* Makes them snap perfectly into view */
+    gap: 20px;
+    padding: 20px 10px;
+    width: 100%;
+    justify-content: flex-start; /* Aligns them from the left */
+}
+
+.mangal-card, .event-card {
+    flex: 0 0 85%; /* Shows most of one card on mobile */
+    max-width: 320px;
+    scroll-snap-align: center;
+    margin: 0 !important; /* Removes the vertical margins */
+}
+
+/* Hide scrollbar for a cleaner look */
+.events-wrapper::-webkit-scrollbar {
+    display: none;
+}
+@media (min-width: 768px) {
+    .events-wrapper {
+        justify-content: center; /* Centers cards on big screens */
+        flex-wrap: nowrap;
+        overflow-x: visible;
+    }
+    .mangal-card {
+        flex: 0 1 300px;
+    }
+}
