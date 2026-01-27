@@ -15,28 +15,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div id="kankotri-gate" class="gate-wrapper">
-    <div class="royal-background">
-        <div id="petal-container"></div>
-    </div>
-    <div class="gate-center-body">
-        <div class="ganesh-wrapper">
-            <img src="ganesha-icon.png" alt="Ganesha" class="floating-ganesh">
-        </div>
-        
-        <p class="royal-subtitle">|| શ્રી ગણેશાય નમઃ ||</p>
-        <h1 class="couple-names-grand">Anjali <span class="ampersand">&</span> Hardik</h1>
-        
-        <div class="button-wrapper">
-            <button class="royal-open-btn-premium" onclick="openKankotri()">
-                <span class="btn-shine"></span>
-                <span class="btn-text">Open Invitation</span>
+   <div id="welcome-modal" class="welcome-overlay">
+        <div class="welcome-content">
+            <div class="ganesh-icon">
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                    <path d="M50 10 C30 10 15 25 15 45 C15 65 30 80 50 80 C70 80 85 65 85 45" fill="none" stroke="#800000" stroke-width="3"/>
+                    <text x="50" y="55" font-family="'Noto Serif Gujarati', serif" font-size="40" text-anchor="middle" fill="#800000">ॐ</text>
+                </svg>
+            </div>
+            <h2>Anjali & Hardik</h2>
+            <p>We request the honor of your presence</p>
+            
+            <button class="enter-btn" onclick="enterWebsite()">
+                <i class="fas fa-envelope-open-text"></i> Open Invitation
             </button>
         </div>
     </div>
-</div>
-<main id="main-content" class="content-hidden">
-    </main>
+
     <button id="music-btn" class="music-btn" onclick="toggleMusic()">
         <i class="fas fa-music"></i>
     </button>
@@ -419,75 +414,7 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.animate-on-scroll').forEach((el) => {
     observer.observe(el);
 });
-   function openKankotri() {
-    const gateWrapper = document.getElementById('kankotri-gate');
-    const mainContent = document.getElementById('main-content');
-
-    // 1. Immediately trigger the gate opening animation
-    if (gateWrapper) {
-        gateWrapper.classList.add('opened');
-    }
-
-    // 2. Smoothly show the main content
-    // We use a small delay so the content starts appearing as gates begin to swing
-    setTimeout(() => {
-        if (mainContent) {
-            mainContent.classList.add('content-visible'); // Triggers the CSS opacity transition
-            
-            // Lock horizontal scroll to keep the page grounded
-            document.body.style.overflowX = 'hidden';
-            document.body.style.overflowY = 'auto';
-        }
-    }, 400); 
-
-    // 3. Completely remove the cover once the animation finishes
-    // This ensures guests can interact with the events and maps without issues
-    setTimeout(() => {
-        if (gateWrapper) {
-            gateWrapper.style.display = 'none';
-        }
-    }, 2000);
-}
-   function createPetals() {
-    const container = document.getElementById('petal-container');
-    if (!container) return;
-
-    const petalCount = 40; // More petals for a richer look
-
-    for (let i = 0; i < petalCount; i++) {
-        const petal = document.createElement('div');
-        const isGold = Math.random() > 0.7;
-        
-        petal.className = isGold ? 'petal gold' : 'petal';
-        
-        // Randomize Size
-        const size = (Math.random() * 10 + 10) + 'px';
-        petal.style.width = size;
-        petal.style.height = size;
-        
-        // POSITIONAL FIX: Distribute evenly from 0 to 100%
-        // We use Math.floor to get a solid integer percentage
-        petal.style.left = Math.floor(Math.random() * 100) + '%';
-        
-        // TIMING FIX: Vary the fall speed so they don't look like a solid block
-        const duration = (Math.random() * 4 + 6) + 's';
-        petal.style.animationDuration = duration;
-        
-        // Start some petals halfway down the screen so it's full immediately
-        const delay = (Math.random() * -10) + 's';
-        petal.style.animationDelay = delay;
-        
-        container.appendChild(petal);
-    }
-}
-
-// Clear existing petals before running to prevent stacking
-document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('petal-container');
-    if(container) container.innerHTML = ''; 
-    createPetals();
-});
-window.onload = createPetals;
+  
     </script>
      <nav class="glass-dock">
         <a href="#" class="dock-item" onclick="window.scrollTo(0,0); return false;">
@@ -504,6 +431,7 @@ window.onload = createPetals;
         </a>
 </body>
 </html>
+
 
 
 
