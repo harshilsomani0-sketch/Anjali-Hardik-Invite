@@ -419,35 +419,34 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.animate-on-scroll').forEach((el) => {
     observer.observe(el);
 });
-    function openKankotri() {
+   function openKankotri() {
     const gateWrapper = document.getElementById('kankotri-gate');
     const mainContent = document.getElementById('main-content');
-    const centerBody = document.querySelector('.gate-center-body');
 
-    // 1. Open the gates
-    gateWrapper.classList.add('opened');
-
-    // 2. Hide the cover text instantly to prevent overlapping
-    if (centerBody) {
-        centerBody.style.opacity = '0';
-        centerBody.style.pointerEvents = 'none';
+    // 1. Immediately trigger the gate opening animation
+    if (gateWrapper) {
+        gateWrapper.classList.add('opened');
     }
 
-    // 3. Reveal the main content with a simple FADE only (no floating)
+    // 2. Smoothly show the main content
+    // We use a small delay so the content starts appearing as gates begin to swing
     setTimeout(() => {
-        mainContent.style.visibility = 'visible';
-        mainContent.style.opacity = '1';
-        mainContent.classList.add('content-visible');
-        
-        // Lock horizontal scroll
-        document.body.style.overflowX = 'hidden';
-        document.body.style.overflowY = 'auto';
-    }, 600);
+        if (mainContent) {
+            mainContent.classList.add('content-visible'); // Triggers the CSS opacity transition
+            
+            // Lock horizontal scroll to keep the page grounded
+            document.body.style.overflowX = 'hidden';
+            document.body.style.overflowY = 'auto';
+        }
+    }, 400); 
 
-    // 4. Remove the gates to clean the screen
+    // 3. Completely remove the cover once the animation finishes
+    // This ensures guests can interact with the events and maps without issues
     setTimeout(() => {
-        gateWrapper.style.display = 'none';
-    }, 2500);
+        if (gateWrapper) {
+            gateWrapper.style.display = 'none';
+        }
+    }, 2000);
 }
    function createPetals() {
     const container = document.getElementById('petal-container');
@@ -505,6 +504,7 @@ window.onload = createPetals;
         </a>
 </body>
 </html>
+
 
 
 
