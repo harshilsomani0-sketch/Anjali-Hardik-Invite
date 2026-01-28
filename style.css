@@ -1263,3 +1263,432 @@ h1, h2, h3, .gujarati-name {
     border-left: 2px solid var(--gold);
     padding-left: 10px;
 }
+/* --- SMOOTH ROCKET REVEAL --- */
+.welcome-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+    /* This creates the smooth 'rocket' lift-off effect */
+    transform: translateY(-100vh) scale(1.05); 
+    transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1), 
+                opacity 0.8s ease;
+}
+
+/* Ensure the main content stays grounded as the cover lifts */
+.main-wrapper {
+    opacity: 0;
+    transform: none !important; /* Grounded state */
+    transition: opacity 1s ease 0.5s;
+}
+
+.welcome-overlay.hidden + .main-wrapper {
+    opacity: 1;
+}
+/* --- 1. Root & Body Grounding --- */
+html, body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden !important;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- 2. The Royal Envelope (Welcome Modal) --- */
+.welcome-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #fffcf5; /* Ivory Silk */
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.8s ease;
+}
+
+/* The Envelope Wrapper */
+.envelope-wrapper {
+    position: relative;
+    width: 90%;
+    max-width: 420px;
+    height: 550px;
+    background: #ffffff;
+    border: 1px solid #d4af37; /* Gold */
+    box-shadow: 0 30px 60px rgba(128, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* --- 3. Fixing the Name Visibility --- */
+.envelope-paper {
+    text-align: center;
+    z-index: 5;
+    width: 100%;
+}
+
+.couple-names-modal {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 10vw, 3.5rem); /* Responsive */
+    color: #800000; /* Maroon */
+    margin-bottom: 10px;
+    line-height: 1.2;
+    opacity: 1 !important; /* Forces visibility */
+    visibility: visible !important;
+}
+
+.amp-modal {
+    font-family: 'Great Vibes', cursive;
+    color: #d4af37;
+    font-size: 1.2em;
+}
+
+.request-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+/* --- 4. The Wax Seal with Ganesha --- */
+.wax-seal {
+    width: 90px;
+    height: 90px;
+    background: #800000;
+    border: 3px solid #d4af37;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+    transition: 0.4s;
+}
+
+.seal-ganesha {
+    width: 55px !important;
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+/* --- 5. The Rocket Animation Class --- */
+.welcome-overlay.hidden {
+    transform: translateY(-100vh) scale(1.05); /* Rocket Lift-off */
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* --- 6. Inner Content Grounding --- */
+#main-content {
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: none !important; /* Grounded */
+}
+/* --- Premium Button Styling --- */
+.royal-enter-btn {
+    position: relative;
+    background: linear-gradient(135deg, #800000 0%, #a52a2a 100%); /* Deep Maroon */
+    color: #d4af37; /* Royal Gold */
+    padding: 18px 45px;
+    font-family: 'Cinzel', serif; /* Sharp, royal font */
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border: 2px solid #d4af37;
+    border-radius: 0; /* Traditional sharp edges for a grounded look */
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(128, 0, 0, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    z-index: 10;
+}
+
+/* The Animated Shine Effect */
+.royal-enter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent);
+    transform: skewX(-25deg);
+    transition: 0.8s;
+}
+
+/* Hover & Active States */
+.royal-enter-btn:hover {
+    background: #d4af37; /* Becomes Gold */
+    color: #800000; /* Text becomes Maroon */
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+}
+
+.royal-enter-btn:hover::before {
+    left: 150%;
+}
+
+.royal-enter-btn:active {
+    transform: scale(0.95);
+}
+/* --- Royal Button with Gold Pulse --- */
+.royal-enter-btn {
+    position: relative;
+    background: linear-gradient(135deg, #800000 0%, #a52a2a 100%);
+    color: #d4af37;
+    padding: 18px 45px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border: 2px solid #d4af37;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(128, 0, 0, 0.4);
+    transition: all 0.4s ease;
+    z-index: 10;
+    /* This connects to the animation below */
+    animation: goldPulse 2s infinite; 
+}
+
+/* The Pulse Effect Animation */
+@keyframes goldPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7), 0 10px 25px rgba(128, 0, 0, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(212, 175, 55, 0), 0 10px 25px rgba(128, 0, 0, 0.4);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0), 0 10px 25px rgba(128, 0, 0, 0.4);
+    }
+}
+
+/* Stop animation when the rocket lift-off happens */
+.welcome-overlay.hidden .royal-enter-btn {
+    animation: none !important;
+}
+
+/* Shine effect on the button surface */
+.royal-enter-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(30deg);
+    transition: all 0.6s;
+}
+
+.royal-enter-btn:hover::after {
+    left: 120%;
+}
+/* --- Gold Glitter Particle Styling --- */
+.glitter-particle {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--gold-gradient, #d4af37);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 100000;
+    animation: glitterFly 1s ease-out forwards;
+}
+
+@keyframes glitterFly {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        /* Particles fly in random directions via JS */
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+}
+/* --- Force Inner Content to Show --- */
+
+/* Initially hide the main content */
+.main-wrapper, #main-content {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease;
+}
+
+/* When the rocket lift-off happens, reveal the inner part */
+#welcome-modal.hidden ~ .main-wrapper,
+#welcome-modal.hidden ~ #main-content {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* Ensure all cards inside are grounded and visible */
+.visible {
+    opacity: 1 !important;
+    transform: none !important;
+}
+/* --- Ganesha Icon Fix (Above Names) --- */
+.ganesh-top-badge {
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.modal-ganesh-img {
+    width: 90px; /* Perfect size for mobile */
+    height: auto;
+    filter: drop-shadow(0 4px 8px rgba(128, 0, 0, 0.2));
+    animation: ganeshFloat 3s ease-in-out infinite;
+}
+
+@keyframes ganeshFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* --- Mobile-Responsive Grounding --- */
+.envelope-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    width: 90%;
+    max-width: 400px;
+    background: #ffffff;
+    border: 1px solid #d4af37;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+/* Fix for Mobile Name Sizing */
+@media (max-width: 480px) {
+    .couple-names-modal {
+        font-size: 2.5rem !important; /* Prevents text overflow */
+    }
+    .amp-modal {
+        font-size: 3rem !important;
+        display: block; /* Stacks the '&' nicely on small screens */
+        margin: 5px 0;
+    }
+    .modal-ganesh-img {
+        width: 70px; /* Slightly smaller for small phones */
+    }
+    .royal-enter-btn {
+        width: 100%; /* Full width button for easier tapping */
+        padding: 15px 20px;
+        letter-spacing: 2px;
+    }
+}
+
+/* --- The Rocket Lift-off Reveal --- */
+.welcome-overlay.hidden {
+    transform: translateY(-100vh); /* Moves up smoothly like a rocket */
+    opacity: 0;
+    transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.8s ease;
+}
+/* --- Royal Arch (Darwaza) Theme --- */
+.royal-arch-container {
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    background: #ffffff;
+    /* Create the Arch Shape: Rounded top, flat bottom */
+    border-radius: 200px 200px 0 0; 
+    border: 2px solid #d4af37;
+    padding: 60px 30px 40px;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(128, 0, 0, 0.15);
+    background-image: 
+        linear-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* Golden Inner Frame */
+.royal-arch-container::after {
+    content: '';
+    position: absolute;
+    top: 10px; left: 10px; right: 10px; bottom: 0;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 190px 190px 0 0;
+    pointer-events: none;
+}
+
+/* Ganesha Positioning on Arch */
+.ganesh-seal-top {
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 5;
+}
+
+.modal-ganesh-img {
+    width: 100px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+.ornament-divider {
+    color: #d4af37;
+    margin: 15px 0;
+    letter-spacing: 5px;
+    font-size: 0.8rem;
+}
+
+/* --- Mobile Fixes --- */
+@media (max-width: 480px) {
+    .royal-arch-container {
+        width: 85%;
+        padding: 50px 20px 30px;
+        border-radius: 160px 160px 0 0; /* Adjusted for smaller screens */
+    }
+    
+    .couple-names-modal {
+        font-size: 2.0rem !important;
+        margin-top: 10px;
+    }
+}
+/* --- Couple Names One-Line Fix --- */
+.couple-names-modal {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap !important; /* Forces single line */
+    white-space: nowrap;
+    font-family: 'Playfair Display', serif;
+    color: #800000;
+    margin: 15px 0;
+    /* Responsive font sizing to fit screen width */
+    font-size: clamp(1.8rem, 6vw, 3rem) !important; 
+    gap: 10px;
+}
+
+.amp-modal {
+    font-family: 'Great Vibes', cursive;
+    color: #d4af37;
+    font-size: 1.2em;
+    display: inline-block;
+}
+
+/* --- Mobile View Adjustments --- */
+@media (max-width: 480px) {
+    .couple-names-modal {
+        font-size: 1.6rem !important; /* Smaller for very narrow phones */
+        gap: 5px;
+    }
+    
+    .royal-arch-container {
+        width: 92%;
+        padding: 40px 15px;
+    }
+}
+
