@@ -15,22 +15,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-   <div id="welcome-modal" class="welcome-overlay">
-        <div class="welcome-content">
-            <div class="ganesh-icon">
-                <svg viewBox="0 0 100 100" width="50" height="50">
-                    <path d="M50 10 C30 10 15 25 15 45 C15 65 30 80 50 80 C70 80 85 65 85 45" fill="none" stroke="#800000" stroke-width="3"/>
-                    <text x="50" y="55" font-family="'Noto Serif Gujarati', serif" font-size="40" text-anchor="middle" fill="#800000">ॐ</text>
-                </svg>
+  <div id="welcome-modal" class="welcome-overlay">
+    <div class="royal-arch-container">
+        <div class="arch-header">
+            <div class="ganesh-seal-top">
+                <img src="ganesha-icon.png" alt="Ganesha" class="modal-ganesh-img">
             </div>
-            <h2>Anjali & Hardik</h2>
-            <p>We request the honor of your presence</p>
+        </div>
+
+        <div class="arch-body">
+            <h2 class="couple-names-modal">
+                Anjali <span class="amp-modal">&</span> Hardik
+            </h2>
+            <div class="ornament-divider">✦ ━ ❦ ━ ✦</div>
+            <p class="request-text">We request the honor of your presence</p>
             
-            <button class="enter-btn" onclick="enterWebsite()">
-                <i class="fas fa-envelope-open-text"></i> Open Invitation
-            </button>
+            <div class="open-btn-wrapper">
+                <button class="royal-enter-btn" onclick="enterWebsite()">
+                    Open Invitation
+                </button>
+            </div>
         </div>
     </div>
+</div>
 
     <button id="music-btn" class="music-btn" onclick="toggleMusic()">
         <i class="fas fa-music"></i>
@@ -418,6 +425,94 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.animate-on-scroll').forEach((el) => {
     observer.observe(el);
 });
+        function enterWebsite() {
+    // Select all necessary elements
+    const modal = document.getElementById('welcome-modal');
+    const mainContent = document.querySelector('.main-wrapper');
+    const bgMusic = document.getElementById('wedding-music');
+    const musicBtn = document.getElementById('music-btn');
+    const seal = document.querySelector('.wax-seal');
+    const openBtn = document.querySelector('.royal-enter-btn');
+
+    // 1. CELEBRATION: Trigger Glitter Pop
+    // Get button position to explode glitter from the center of the click
+    if (openBtn) {
+        const rect = openBtn.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        for (let i = 0; i < 35; i++) {
+            createGlitter(centerX, centerY);
+        }
+    }
+
+    // 2. AUDIO: Play Wedding Music
+    // Browsers require this to be inside a click function
+    if (bgMusic) {
+        bgMusic.play().then(() => {
+            if (musicBtn) musicBtn.classList.add('playing');
+        }).catch(err => {
+            console.log("Music play blocked by browser settings:", err);
+        });
+    }
+
+    // 3. VISUAL FEEDBACK: Shrink the Seal slightly
+    if (seal) {
+        seal.style.transform = "translate(-50%, -50%) scale(0.85)";
+        seal.style.opacity = "0";
+        seal.style.transition = "all 0.4s ease";
+    }
+
+    // 4. ROCKET LIFT-OFF: Reveal the Invitation
+    // Delay slightly to let the glitter pop happen first
+    setTimeout(() => {
+        if (modal) {
+            modal.classList.add('hidden'); // Triggers the CSS translateY(-100vh)
+        }
+
+        // Force the inner content to be visible and grounded
+        if (mainContent) {
+            mainContent.style.display = 'block';
+            mainContent.style.visibility = 'visible';
+            mainContent.style.opacity = '1';
+        }
+
+        // Grounding the scroll: Enable vertical, Lock horizontal
+        document.body.style.overflowY = 'auto';
+        document.body.style.overflowX = 'hidden';
+    }, 400);
+
+    // 5. CLEANUP: Remove modal from DOM after it flies off-screen
+    setTimeout(() => {
+        if (modal) modal.style.display = 'none';
+    }, 2000);
+}
+
+/**
+ * Helper function to create individual glitter particles
+ */
+function createGlitter(x, y) {
+    const particle = document.createElement('div');
+    particle.className = 'glitter-particle';
+    
+    // Generate random flight paths for each particle
+    const tx = (Math.random() - 0.5) * 400 + 'px';
+    const ty = (Math.random() - 0.5) * 400 + 'px';
+    
+    particle.style.setProperty('--tx', tx);
+    particle.style.setProperty('--ty', ty);
+    particle.style.left = x + 'px';
+    particle.style.top = y + 'px';
+    
+    // Randomize colors between Gold and Maroon
+    const colors = ['#D4AF37', '#800000', '#FFD700', '#A52A2A'];
+    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+    
+    document.body.appendChild(particle);
+
+    // Remove particle from memory after animation ends to keep site fast
+    setTimeout(() => particle.remove(), 1000);
+}  
   
     </script>
      <nav class="glass-dock">
@@ -435,6 +530,7 @@ document.querySelectorAll('.animate-on-scroll').forEach((el) => {
         </a>
 </body>
 </html>
+
 
 
 
