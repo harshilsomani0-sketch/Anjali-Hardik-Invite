@@ -76,7 +76,7 @@ h1, h2, h3, .gujarati-name {
 }
 
 .shloka {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: 700;
     margin-bottom: 8px;
     color: var(--maroon);
@@ -1691,4 +1691,5 @@ html, body {
         padding: 40px 15px;
     }
 }
+
 
