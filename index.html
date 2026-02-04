@@ -253,6 +253,25 @@
         
         <div class="gallery-container" id="scroll-container">
 <div class="photo-frame"><img src="p1.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p2.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p3.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p4.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p5.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p6.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p7.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p8.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p9.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p10.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p11.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p12.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p13.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p14.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p15.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p16.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p17.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p18.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p19.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
+            <div class="photo-frame"><img src="p20.JPG" class="gallery-item" alt="Pre-Wedding" onclick="openLightbox(this)"></div>
         </div>
         
         <button class="gallery-nav next" onclick="scrollGallery(1)"><i class="fas fa-chevron-right"></i></button>
@@ -555,10 +574,26 @@ document.getElementById('scroll-container').addEventListener('scroll', function(
     // Limits the thumb move to within the track
     progress.style.left = (scrollPercent * 0.8) + "%"; 
 }); 
+        document.addEventListener("DOMContentLoaded", function() {
+    const images = document.querySelectorAll('.gallery-item');
+    
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.classList.add('loaded'); // Triggers the CSS fade-in
+                observer.unobserve(img); // Stops watching once loaded
+            }
+        });
+    }, { threshold: 0.1 });
+
+    images.forEach(img => imageObserver.observe(img));
+});
   
     </script>
 </body>
 </html>
+
 
 
 
