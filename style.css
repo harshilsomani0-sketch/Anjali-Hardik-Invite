@@ -1830,6 +1830,29 @@ html, body {
     height: 380px;
     border: 1px solid #d4af37; /* Royal Gold matching Bhavnagar style */
 }
+/* --- Smooth Loading Animation --- */
+.gallery-item {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    background: #fdf5e6; /* Placeholder color while loading */
+}
+
+.gallery-item.loaded {
+    opacity: 1;
+}
+
+/* Add a shimmer effect placeholder */
+.photo-frame {
+    background: linear-gradient(90deg, #f0f0f0 25%, #f8f8f8 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
 
 
 
